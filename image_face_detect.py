@@ -8,7 +8,7 @@ image = cv2.imread('')
 while True:
     grayimg = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
 
-    faces = face_cascade.detectMultiScale(greyimg, 1.3, 5)
+    faces = face_cascade.detectMultiScale(grayimg, 1.3, 5)
 
     for (x, y, w, h) in faces:
         cv2.rectangle(img, (x,y), (x+w, y+h), (0,255,0), 2)
