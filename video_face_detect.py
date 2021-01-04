@@ -22,4 +22,5 @@ while True:
     if k == 27:
         break
 
+vid.release()
 cv2.destroyAllWindows()
