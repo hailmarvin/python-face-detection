@@ -1,5 +1,5 @@
 import cv2
-import numpy
+import numpy as np
 
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 
@@ -9,7 +9,7 @@ while True:
     ret, frame = vid.read()
     grayframe = cv2.cvtColor(frame, cv2.COLOR_BGR2GRAY)
 
-    faces = face_cascade.detectMultiScale(greyimg, 1.3, 5)
+    faces = face_cascade.detectMultiScale(grayframe, 1.3, 5)
 
     #video is rendered frame by frame
     for (x, y, w, h) in faces:
