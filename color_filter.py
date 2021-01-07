@@ -15,7 +15,7 @@ while True:
     mask = cv2.inRange(hsv, lower_blue, upper_blue)
     res = cv2.bitwise_and(frame, frame, mask=mask)
 
-    cv2.imshow('filtered',filtered)
+    cv2.imshow('filtered', res)
     cv2.imshow('frame',frame)
 
     k = cv2.waitKey(5) & 0xFF
