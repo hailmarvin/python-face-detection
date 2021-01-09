@@ -1,6 +1,7 @@
 import cv2
 
 face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
+eye_cascade = cv2.CascadeClassifier('haarcascade_eyes.xml')
 
 vid = cv2.VideoCapture(0) # 0 for primary webcam
 
@@ -13,7 +14,12 @@ while True:
     #video is rendered frame by frame
     for (x, y, w, h) in faces:
         cv2.rectangle(frame, (x,y), (x+w, y+h), (0,255,0), 2)
-        rect_color = grayframe[y:y+h, x:x+w]
+        rect_gray = grayframe[y:y+h, x:x+w]
+        rect_color = frame[y:y+h, x:x+w]
+
+        eyes = eye_cascade.detectMultiScale(rect_gray)
+        for (ex,ey,ew,eh) in eyes:
+            cv2.rectangle(rect_color,(ex,ey),(ex+ew,ey+eh),(0,255,0),2)
 
     cv2.imshow('Detected', frame)
 
